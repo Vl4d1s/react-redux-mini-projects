@@ -8,10 +8,6 @@ class App extends React.Component {
     // THIS IS THE ONLY TIME we do direct assignment
     // to this.state
     this.state = { lat: null, errorMessage: "" };
-  }
-
-  // React says that we have to define render function.
-  render() {
     // We dont want to initialize things in render function,
     // Because it is activated in every update of the state.
     window.navigator.geolocation.getCurrentPosition(
@@ -26,14 +22,18 @@ class App extends React.Component {
         this.setState({ errorMessage: err.message });
       }
     );
+  }
 
-    return (
-      <div>
-        Latitude: {this.state.lat}
-        <br />
-        Error: {this.state.errorMessage}
-      </div>
-    );
+  // React says that we have to define render function.
+  render() {
+    if (this.state.errorMessage && !this.state.lat) {
+      return <div>Error: {this.state.errorMessage}</div>;
+    }
+
+    if (!this.state.errorMessage && this.state.lat) {
+      return <div>Latitude: {this.state.lat}</div>;
+    }
+    return <div>Loading!</div>;
   }
 }
 
