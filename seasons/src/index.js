@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 class App extends React.Component {
+  /*
   // The first function that pops up when the component will created.
   constructor(props) {
     super(props); // A ref to React.Component constructor function.
@@ -10,6 +11,13 @@ class App extends React.Component {
     this.state = { lat: null, errorMessage: "" };
     // We dont want to initialize things in render function,
     // Because it is activated in every update of the state.
+  }
+  */
+
+  // Exactly the same as setting up a constructor and call super
+  state = { lat: null, errorMessage: "" };
+
+  componentDidMount() {
     window.navigator.geolocation.getCurrentPosition(
       (position) => {
         // We called setState method every time we want to update our state.
