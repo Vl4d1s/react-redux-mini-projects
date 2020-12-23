@@ -8,13 +8,23 @@ const getSeason = (lat, month) => {
   }
 };
 
+const seasonConfig = {
+  winter: { text: "Burr, it is chilly!", icon: "snowflake" },
+  summer: { text: "Let's hit the beach!", icon: "sun" },
+};
+
 const SeasonDisplay = ({ lat }) => {
   const season = getSeason(lat, new Date().getMonth);
-  const test =
-    season === "winter" ? "Burr, it is chilly" : "Lets hit the beach!";
+  // When we use object destructuring, The name of the variables must
+  // be the same as the names of the keys in the object.
+  const { text, icon } = seasonConfig[season];
+  console.log(icon);
+
   return (
     <div>
-      <h1>{test}</h1>
+      <i className={`${icon} icon`}></i>
+      <h1>{text}</h1>
+      <i className={`${icon} icon`}></i>
     </div>
   );
 };
