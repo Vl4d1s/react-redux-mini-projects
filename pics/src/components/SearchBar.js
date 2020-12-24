@@ -3,13 +3,19 @@ import React from "react";
 class SearchBar extends React.Component {
   state = { term: "" };
 
+  onFormSubmit(event) {
+    // this line will prevent the browser from submitting the form
+    // automatically and refreshing the page.
+    // this is the default behavior of the browser
+    event.preventDefault();
+  }
   render() {
     return (
       /* We do not put set of Parenthesis like: this.onInputChange()
          Becuse then the function will activated when the component will
          rendered. */
       <div className="ui segment">
-        <form className="ui form">
+        <form onSubmit={this.onFormSubmit} className="ui form">
           <div className="field">
             <label>Image Search</label>
             <input
