@@ -8,7 +8,11 @@ class SearchBar extends React.Component {
     // automatically and refreshing the page.
     // this is the default behavior of the
     event.preventDefault();
-    console.log(this.state.term);
+    // When we move props to a class-based component,
+    // we need to add the word this before props.
+    // In addition, we want to fach data from the
+    // App component and not from the SearchBar.
+    this.props.onSubmit(this.state.term);
   };
   render() {
     return (
