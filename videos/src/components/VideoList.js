@@ -5,7 +5,7 @@ const VideoList = ({ videos }) => {
   const renderedList = videos.map((video) => {
     return (
       <div>
-        <VideoItem />
+        <VideoItem video={video} />
       </div>
     );
   });
