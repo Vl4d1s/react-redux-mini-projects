@@ -22,9 +22,13 @@ const Search = () => {
 
       setResults(data.query.search);
     };
-    // When the component rendered on the fist time the value of
-    // term = "" and we don't want to search empty string
-    search();
+
+    const timeutID = setTimeout(() => {
+      // search only if term != ""
+      if (term) {
+        search();
+      }
+    }, 500);
   }, [term]);
 
   const renderedResults = results.map((result) => {
