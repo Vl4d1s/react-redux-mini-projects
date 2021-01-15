@@ -4,8 +4,7 @@ import axios from "axios";
 const Search = () => {
   const [term, setTerm] = useState("programing");
   const [results, setResults] = useState([]);
-  // [term] means: Run after every render
-  // if data has changed since last render.
+
   console.log(results);
 
   useEffect(() => {
@@ -28,7 +27,13 @@ const Search = () => {
       if (term) {
         search();
       }
-    }, 500);
+    }, 1000);
+
+    return () => {
+      clearTimeout(timeutID);
+    };
+    // [term] means: Run after every render
+    // if data has changed since last render.
   }, [term]);
 
   const renderedResults = results.map((result) => {
