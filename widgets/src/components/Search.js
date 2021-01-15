@@ -22,16 +22,21 @@ const Search = () => {
       setResults(data.query.search);
     };
 
-    const timeutID = setTimeout(() => {
-      // search only if term != ""
-      if (term) {
-        search();
-      }
-    }, 1000);
+    if (term && !results.length) {
+      search();
+    } else {
+      const timeutID = setTimeout(() => {
+        // search only if term != ""
+        if (term) {
+          search();
+        }
+      }, 1000);
 
-    return () => {
-      clearTimeout(timeutID);
-    };
+      return () => {
+        clearTimeout(timeutID);
+      };
+    }
+
     // [term] means: Run after every render
     // if data has changed since last render.
   }, [term]);
