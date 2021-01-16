@@ -1,10 +1,15 @@
-import { render } from "@testing-library/react";
 import React from "react";
 
-const Dropdown = ({ options }) => {
+const Dropdown = ({ options, selected, onSelectedChange }) => {
   const renderdOptions = options.map((option) => {
     return (
-      <div key={option.value} className="item">
+      <div
+        key={option.value}
+        className="item"
+        onClick={() => {
+          onSelectedChange(option);
+        }}
+      >
         {option.label}
       </div>
     );
@@ -16,7 +21,7 @@ const Dropdown = ({ options }) => {
         <label className="label">Select a Color</label>
         <div className="ui selection dropdown visible active">
           <i className="dropdown icon"></i>
-          <div className="text">Select Color</div>
+          <div className="text">{selected.label}</div>
           <div className="menu visible transition">{renderdOptions}</div>
         </div>
       </div>
