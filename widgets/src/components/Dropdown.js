@@ -2,6 +2,10 @@ import React from "react";
 
 const Dropdown = ({ options, selected, onSelectedChange }) => {
   const renderdOptions = options.map((option) => {
+    if (option.value === selected.value) {
+      // If user selected some opting don't show it twice.
+      return null;
+    }
     return (
       <div
         key={option.value}
