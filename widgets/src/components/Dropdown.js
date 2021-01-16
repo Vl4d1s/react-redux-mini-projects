@@ -5,19 +5,23 @@ const Dropdown = ({ options, selected, onSelectedChange }) => {
   const ref = useRef();
 
   useEffect(() => {
+    const onBodyClick = (event) => {
+      if (ref.current && ref.current.contains(event.target)) {
+        return;
+      }
+      setOpen(false);
+    };
     // First all the addEventListener get calls and then React EventListeners.
     // so this is the first addEventListener that called.
     document.body.addEventListener(
       "click",
-      (event) => {
-        if (ref.current && ref.current.contains(event.target)) {
-          return;
-        }
-        setOpen(false);
-      },
+      onBodyClick,
       // for react v17
       { capture: true }
     );
+    return () => {
+      document.body.removeEventListener("click", onBodyClick);
+    };
   }, []);
 
   const renderdOptions = options.map((option) => {
