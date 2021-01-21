@@ -1,6 +1,10 @@
 import React from "react";
-import { selectSong } from "../actions";
+import SongList from "./SongList";
 
 export default () => {
-  return <div>Hi</div>;
+  return (
+    <div>
+      <SongList />
+    </div>
+  );
 };
