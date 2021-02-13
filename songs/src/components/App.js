@@ -1,6 +1,6 @@
 import React from "react";
 import SongList from "./SongList";
-import SongDetails from './SongDetails'
+import SongDetails from "./SongDetails";
 
 const App = () => {
   return (
@@ -10,7 +10,7 @@ const App = () => {
           <SongList />
         </div>
         <div className="column eight wide">
-          <SongDetails/>
+          <SongDetails />
         </div>
       </div>
     </div>
