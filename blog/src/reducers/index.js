@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 
 export default combineReducers({
-  // Dummy reducer
+  // Dummy reducerf
   replaceMe: () => "Vladis",
 });

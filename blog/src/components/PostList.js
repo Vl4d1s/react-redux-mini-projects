@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class PostList extends Component {
   render() {
-    return <div>PostList</div>;
+    return <h1>PostList</h1>;
   }
 }
 
