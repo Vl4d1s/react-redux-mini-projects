@@ -13,6 +13,15 @@ export const fetchPostsAndUsers = () => async (dispatch, getState) => {
   // We are not using await before fetchUser dispatch becouse we dont
   // need to do nothing after we fatching the users.
   userIds.forEach((id) => dispatch(fetchUser(id)));
+
+  // We can also use lodash chaining abbility
+  // The list of posts will past behind the scenes as the firs arg to map.
+  // value = execute
+  // _.chain(getState().posts)
+  //   .map("userId")
+  //   .uniq()
+  //   .forEach((id) => dispatch(fetchUser(id)))
+  //   .value();
 };
 
 export const fetchPosts = () =>
